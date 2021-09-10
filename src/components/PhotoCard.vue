@@ -48,11 +48,21 @@ export default {
   props: {
     listCards: [],
   },
-
+  data() {
+    return {
+      tag: '',
+      isAddTag: false,
+      idTag: "",
+      isClick: false,
+      delay: 700,
+      clicks: 0,
+      timer: null
+    }
+  },
   methods: {
     ...mapActions({
       deleteTag: "cards/deleteTag",
-      addTag: "cards/addTag"
+      addTag_Store: "cards/addTag"
     }),
 
     clicked(id) {
@@ -71,20 +81,13 @@ export default {
         this.isClick = !this.isClick
       }
       this.idTag = id
+    },
+    addTag(data) {
+      this.addTag_Store(data)
+      this.tag = ''
     }
+  },
 
-  },
-  data() {
-    return {
-      tag: '',
-      isAddTag: false,
-      idTag: "",
-      isClick: false,
-      delay: 700,
-      clicks: 0,
-      timer: null
-    }
-  },
   computed: {},
 
 
